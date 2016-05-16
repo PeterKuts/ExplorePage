@@ -13,11 +13,8 @@
 @interface PCRoot : NSObject
 
 @property (nonatomic, assign, readonly) NSInteger totalItems;
-@property (nonatomic, strong, readonly) NSOrderedSet<PCActivity*> *activities;
+@property (nonatomic, strong, readonly) NSArray<PCActivity*> *activities;
 
-- (instancetype)initWithTotalItems:(NSInteger)totalItems activities:(NSOrderedSet<PCActivity*>*)activities NS_DESIGNATED_INITIALIZER;
-- (instancetype)initWithModelDictionary:(NSDictionary*)modelDictionary;
-
-- (PCRoot*)mergedWithRoot:(PCRoot*)another;
+- (instancetype)initWithModelDictionary:(NSDictionary*)modelDictionary NS_DESIGNATED_INITIALIZER;
 
 @end
