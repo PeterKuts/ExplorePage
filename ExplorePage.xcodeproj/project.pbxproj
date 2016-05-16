@@ -34,6 +34,7 @@
 		CEADC36F1CEA0990003337ED /* PCPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCPhoto.m; sourceTree = "<group>"; };
 		CEADC3711CEA13AF003337ED /* PCRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCRoot.h; sourceTree = "<group>"; };
 		CEADC3721CEA13AF003337ED /* PCRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCRoot.m; sourceTree = "<group>"; };
+		CEADC3741CEA60CC003337ED /* ModelClasses.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelClasses.h; sourceTree = "<group>"; };
 		CEBAB44E1CE9DCD600357BC9 /* ExplorePage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExplorePage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBAB4521CE9DCD600357BC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEBAB4541CE9DCD600357BC9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 		CEADC3611CEA0319003337ED /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CEADC3741CEA60CC003337ED /* ModelClasses.h */,
 				CEADC3711CEA13AF003337ED /* PCRoot.h */,
 				CEADC3721CEA13AF003337ED /* PCRoot.m */,
 				CEADC3651CEA04F9003337ED /* PCActivity.h */,
