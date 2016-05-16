@@ -104,11 +104,10 @@ NSString *const kPCServerErrorDomain = @"PCServerErrorDomain";
             completionHandler(strongPhoto, nil, error);
             return;
         }
-        completionHandler(strongPhoto, [UIImage imageWithData:data], nil);
+        completionHandler(strongPhoto, strongPhoto? [UIImage imageWithData:data]: nil, nil);
     }];
     [task resume];
 }
-
 
 #pragma mark - Errors 
 
