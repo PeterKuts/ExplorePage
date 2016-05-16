@@ -51,6 +51,26 @@ NSString *const kPCServerErrorDomain = @"PCServerErrorDomain";
        completionHandler:completionHandler];
 }
 
+- (void)loadRootObjectLimit:(NSInteger)limit
+                    afterId:(NSNumber*)afterId
+                   beforeId:(NSNumber*)beforeId
+          completionHandler:(RootObjectCompletionHandler)completionHandler
+{
+    NSURLComponents *components = [NSURLComponents componentsWithURL:self.baseURL resolvingAgainstBaseURL:NO];
+    NSMutableArray<NSURLQueryItem *>* queryItems = [NSMutableArray arrayWithArray:components.queryItems];
+    if (limit > 0) {
+        [queryItems addObject:[NSURLQueryItem queryItemWithName:@"limit" value:[NSString stringWithFormat:@"%d", (int)limit]]];
+    }
+    if (afterId) {
+        [queryItems addObject:[NSURLQueryItem queryItemWithName:@"afterId" value:[afterId stringValue]]];
+    }
+    if (beforeId) {
+        [queryItems addObject:[NSURLQueryItem queryItemWithName:@"beforeId" value:[beforeId stringValue]]];
+    }
+    components.queryItems = queryItems.count? queryItems: nil;
+    [self loadRootObject:[components URL] completionHandler:completionHandler];
+}
+
 - (void)loadRootObject:(NSURL*)url completionHandler:(RootObjectCompletionHandler)completionHandler {
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request

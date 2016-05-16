@@ -24,18 +24,19 @@
     self.root = [[PCRoot alloc] initWithTotalItems:0 activities:nil];
     self.server = [[PCServer alloc] initWithAuthorizationToken:@"Token CLLkHDPJEGwuqOuDf056Udh6pm6OK-zQkEMRk062Glk"
                                                              urlCache:nil];
-    NSLog(@"%@", [NSThread currentThread]);
-    [self.server loadRootObjectCompletionHandler:^(PCRoot *_Nullable root, NSError * _Nullable error) {
-        NSLog(@"%@", [NSThread currentThread]);
-        if (error) {
-            NSLog(@"Error:\n%@", error);
-            return;
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"%@", [NSThread currentThread]);
-            self.root = [self.root mergedWithRoot:root];
-        });
-    }];
+    [self.server loadRootObjectLimit:10
+                             afterId:nil
+                            beforeId:nil
+                   completionHandler:^(PCRoot * _Nullable rootObject, NSError * _Nullable error)
+     {
+         if (error) {
+             NSLog(@"Error:\n%@", error);
+             return;
+         }
+         dispatch_async(dispatch_get_main_queue(), ^{
+             self.root = [self.root mergedWithRoot:rootObject];
+         });
+     }];
 }
 
 - (void)didReceiveMemoryWarning {

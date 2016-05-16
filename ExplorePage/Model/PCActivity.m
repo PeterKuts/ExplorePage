@@ -34,7 +34,11 @@
 }
 
 - (NSUInteger)hash {
-    return [self.modelId unsignedIntegerValue];
+    return [self.modelId hash];
+}
+
+- (BOOL)isEqual:(id)object {
+    return [object isMemberOfClass:[PCActivity class]] && [self.modelId isEqual:((PCActivity*)object).modelId];
 }
 
 + (NSArray<PCActivity*>*)activitiesWithModelArray:(NSArray<NSDictionary*>*)modelArray {

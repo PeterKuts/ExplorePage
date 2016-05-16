@@ -29,6 +29,10 @@ typedef void(^RootObjectCompletionHandler)(PCRoot * _Nullable rootObject, NSErro
 - (instancetype)initWithAuthorizationToken:(NSString*)authorizationToken urlCache:(NSURLCache* _Nullable)cache NS_DESIGNATED_INITIALIZER;
 
 - (void)loadRootObjectCompletionHandler:(RootObjectCompletionHandler)completionHandler;
+- (void)loadRootObjectLimit:(NSInteger)limit
+                    afterId:(NSNumber* _Nullable)afterId
+                   beforeId:(NSNumber* _Nullable)beforeId
+          completionHandler:(RootObjectCompletionHandler)completionHandler;
 
 @end
 
