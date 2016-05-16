@@ -13,6 +13,7 @@
 @interface ViewController ()
 
 @property (nonatomic, strong) PCServer *server;
+@property (nonatomic, strong) NSMutableOrderedSet<PCActivity*> *photoActivities;
 
 @end
 
@@ -20,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.photoActivities = [NSMutableOrderedSet orderedSet];
     NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:10 * 1024 * 1024
                                                       diskCapacity:100 * 1024 * 1024
                                                           diskPath:@"PhotoCache"];
@@ -27,8 +29,34 @@
                                                       urlCache:cache];
 }
 
+- (void)loadRootObjectWithLimit:(NSInteger)limit {
+    __weak typeof(self) wSelf = self;
+    [self.server loadRootObjectLimit:limit
+                             afterId:nil
+                            beforeId:nil
+                   completionHandler:^(PCRoot * _Nullable rootObject, NSError * _Nullable error)
+     {
+         if (error) {
+             NSLog(@"%@", error);
+             return;
+         }
+         dispatch_async(dispatch_get_main_queue(), ^{
+             __strong typeof(wSelf) sSelf = wSelf;
+             [sSelf updatePhotoActivitiesWithRootObject:rootObject];
+         });
+     }];
+}
+
+- (void)updatePhotoActivitiesWithRootObject:(PCRoot*)root {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.object.objectType == %@ AND NOT self IN %@",
+                              @(PCObjectType_Photo), self.photoActivities];
+    NSArray<PCActivity*> *photoActivities = [root.activities filteredArrayUsingPredicate:predicate];
+    [self.photoActivities addObjectsFromArray:photoActivities];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    NSLog(@"======================DidReceiveMemoryWarning");
 }
 
 @end
