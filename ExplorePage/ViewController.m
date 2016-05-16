@@ -7,11 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "PCPhotoFetcher.h"
+#import "PCServer.h"
 
 @interface ViewController ()
 
-@property (nonatomic, strong) PCPhotoFetcher *fetcher;
+@property (nonatomic, strong) PCServer *server;
 
 @end
 
@@ -19,9 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.fetcher = [[PCPhotoFetcher alloc] initWithAuthorizationToken:@"Token CLLkHDPJEGwuqOuDf056Udh6pm6OK-zQkEMRk062Glk"
+    self.server = [[PCServer alloc] initWithAuthorizationToken:@"Token CLLkHDPJEGwuqOuDf056Udh6pm6OK-zQkEMRk062Glk"
                                                              urlCache:nil];
-    [self.fetcher fetchPhotoListCompletionHandler:^(id  _Nullable data, NSError * _Nullable error) {
+    [self.server loadRootObjectCompletionHandler:^(id  _Nullable data, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error:\n%@", error);
         } else {

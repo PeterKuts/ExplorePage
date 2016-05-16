@@ -1,5 +1,5 @@
 //
-//  PCPhotoFetcher.h
+//  PCServer.h
 //  ExplorePage
 //
 //  Created by user on 5/16/16.
@@ -10,23 +10,23 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString *const kPCPhotoFetcherErrorDomain;
+extern NSString *const kPCServerErrorDomain;
 
 typedef enum : NSUInteger {
-    PCPhotoFetcherErrorCode_WrongRootObject,
-} PCPhotoFetcherErrorCode;
+    PCServerErrorCode_WrongRootObject,
+} PCServerErrorCode;
 
 
 
-typedef void(^PhotoListCompletionHandler)(id _Nullable data, NSError * _Nullable error);
+typedef void(^RootObjectCompletionHandler)(id _Nullable data, NSError * _Nullable error);
 
-@interface PCPhotoFetcher : NSObject
+@interface PCServer : NSObject
 
 - (instancetype)init;
 - (instancetype)initWithAuthorizationToken:(NSString*)authorizationToken;
 - (instancetype)initWithAuthorizationToken:(NSString*)authorizationToken urlCache:(NSURLCache* _Nullable)cache NS_DESIGNATED_INITIALIZER;
 
-- (void)fetchPhotoListCompletionHandler:(PhotoListCompletionHandler)completionHandler;
+- (void)loadRootObjectCompletionHandler:(RootObjectCompletionHandler)completionHandler;
 
 @end
 

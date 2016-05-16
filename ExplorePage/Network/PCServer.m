@@ -1,25 +1,25 @@
 //
-//  PCPhotoFetcher.m
+//  PCServer.m
 //  ExplorePage
 //
 //  Created by user on 5/16/16.
 //  Copyright © 2016 peterkuts. All rights reserved.
 //
 
-#import "PCPhotoFetcher.h"
+#import "PCServer.h"
 #import "PCActivity.h"
 
-NSString *const kPCPhotoFetcherErrorDomain = @"PCPhotoFetcherErrorDomain";
+NSString *const kPCServerErrorDomain = @"PCServerErrorDomain";
 
 
-@interface PCPhotoFetcher()
+@interface PCServer()
 
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, copy) NSURL *baseURL;
 
 @end
 
-@implementation PCPhotoFetcher
+@implementation PCServer
 
 - (instancetype)init {
     return [self initWithAuthorizationToken:@"" urlCache:nil];
@@ -46,12 +46,12 @@ NSString *const kPCPhotoFetcherErrorDomain = @"PCPhotoFetcherErrorDomain";
 }
 
 
-- (void)fetchPhotoListCompletionHandler:(PhotoListCompletionHandler)completionHandler {
-    [self fetchPhotoList:self.baseURL
+- (void)loadRootObjectCompletionHandler:(RootObjectCompletionHandler)completionHandler {
+    [self loadRootObject:self.baseURL
        completionHandler:completionHandler];
 }
 
-- (void)fetchPhotoList:(NSURL*)url completionHandler:(PhotoListCompletionHandler)completionHandler {
+- (void)loadRootObject:(NSURL*)url completionHandler:(RootObjectCompletionHandler)completionHandler {
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request
                                                  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
@@ -67,7 +67,7 @@ NSString *const kPCPhotoFetcherErrorDomain = @"PCPhotoFetcherErrorDomain";
         }
         
         if (![jsonObject isKindOfClass:[NSDictionary class]]) {
-            completionHandler(nil, [PCPhotoFetcher fetcherErrorWithCode:PCPhotoFetcherErrorCode_WrongRootObject]);
+            completionHandler(nil, [PCServer serverErrorWithCode:PCServerErrorCode_WrongRootObject]);
             return;
         }
         
@@ -78,8 +78,8 @@ NSString *const kPCPhotoFetcherErrorDomain = @"PCPhotoFetcherErrorDomain";
 
 #pragma mark - Errors 
 
-+ (NSError*)fetcherErrorWithCode:(PCPhotoFetcherErrorCode)code {
-    return [NSError errorWithDomain:kPCPhotoFetcherErrorDomain code:code userInfo:nil];
++ (NSError*)serverErrorWithCode:(PCServerErrorCode)code {
+    return [NSError errorWithDomain:kPCServerErrorDomain code:code userInfo:nil];
 }
 
 @end
