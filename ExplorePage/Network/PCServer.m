@@ -93,11 +93,18 @@ NSString *const kPCServerErrorDomain = @"PCServerErrorDomain";
     [task resume];
 }
 
-- (void)loadPhoto:(PCPhoto*)photo completionHandler:(void(^)())completionHandler {
+- (void)loadPhoto:(PCPhoto*)photo completionHandler:(PhotoCompletionHandler)completionHandler {
     NSURLRequest *request = [NSURLRequest requestWithURL:photo.url];
+
+    __weak PCPhoto *weakPhoto = photo;
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
     {
-        completionHandler();
+        __strong PCPhoto *strongPhoto = weakPhoto;
+        if (error) {
+            completionHandler(strongPhoto, nil, error);
+            return;
+        }
+        completionHandler(strongPhoto, [UIImage imageWithData:data], nil);
     }];
     [task resume];
 }

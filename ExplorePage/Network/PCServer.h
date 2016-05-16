@@ -6,7 +6,7 @@
 //  Copyright © 2016 peterkuts. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @class PCRoot;
 @class PCPhoto;
@@ -20,8 +20,9 @@ typedef enum : NSUInteger {
 } PCServerErrorCode;
 
 
-
 typedef void(^RootObjectCompletionHandler)(PCRoot * _Nullable rootObject, NSError * _Nullable error);
+typedef void(^PhotoCompletionHandler)(PCPhoto * _Nullable photo, UIImage * _Nullable image, NSError * _Nullable error);
+
 
 @interface PCServer : NSObject
 
@@ -34,7 +35,7 @@ typedef void(^RootObjectCompletionHandler)(PCRoot * _Nullable rootObject, NSErro
                    beforeId:(NSNumber* _Nullable)beforeId
           completionHandler:(RootObjectCompletionHandler)completionHandler;
 
-- (void)loadPhoto:(PCPhoto*)photo completionHandler:(void(^)())completionHandler;
+- (void)loadPhoto:(PCPhoto*)photo completionHandler:(PhotoCompletionHandler)completionHandler;
 
 @end
 
