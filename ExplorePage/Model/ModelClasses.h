@@ -9,4 +9,5 @@
 #import "PCRoot.h"
 #import "PCActivity.h"
 #import "PCObject.h"
+#import "PCPhotoObject.h"
 #import "PCPhoto.h"

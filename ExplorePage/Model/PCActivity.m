@@ -28,7 +28,7 @@
     if (self = [super init]) {
         self.modelId = [modelDictionary numberForKey:@"id"];
         NSDictionary *objectDict = [[modelDictionary dictionaryForKey:@"activity"] dictionaryForKey:@"object"];
-        self.object = [[PCObject alloc] initWithModelDictionary:objectDict];
+        self.object = [PCObject instantiateObjectWithWithModelDictionary:objectDict];
     }
     return self;
 }

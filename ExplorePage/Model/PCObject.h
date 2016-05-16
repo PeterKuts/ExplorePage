@@ -2,22 +2,22 @@
 //  PCObject.h
 //  ExplorePage
 //
-//  Created by user on 5/16/16.
+//  Created by user on 5/17/16.
 //  Copyright © 2016 peterkuts. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@class PCPhoto;
+typedef enum : NSUInteger {
+    PCObjectType_Unknown,
+    PCObjectType_Photo,
+} PCObjectType;
 
 @interface PCObject : NSObject
 
 @property (nonatomic, copy, readonly) NSNumber *modelId;
-@property (nonatomic, strong, readonly) PCPhoto *originalPhoto;
-@property (nonatomic, strong, readonly) NSArray<PCPhoto*> *photos;
+@property (nonatomic, assign, readonly) PCObjectType objectType;
 
-@property (nonatomic, weak, readonly) PCPhoto *smallestPhoto;
-
-- (instancetype)initWithModelDictionary:(NSDictionary*)modelDictionary NS_DESIGNATED_INITIALIZER;
++ (__kindof PCObject*)instantiateObjectWithWithModelDictionary:(NSDictionary*)modelDictionary;
 
 @end
