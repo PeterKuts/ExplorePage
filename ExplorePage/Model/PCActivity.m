@@ -33,6 +33,10 @@
     return self;
 }
 
+- (NSUInteger)hash {
+    return [self.modelId unsignedIntegerValue];
+}
+
 + (NSArray<PCActivity*>*)activitiesWithModelArray:(NSArray<NSDictionary*>*)modelArray {
     NSMutableArray<PCActivity*> *activities = [NSMutableArray arrayWithCapacity:modelArray.count];
     for (NSDictionary *modelDict in modelArray) {

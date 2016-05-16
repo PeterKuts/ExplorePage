@@ -7,7 +7,7 @@
 //
 
 #import "PCServer.h"
-#import "PCActivity.h"
+#import "PCRoot.h"
 
 NSString *const kPCServerErrorDomain = @"PCServerErrorDomain";
 
@@ -70,8 +70,8 @@ NSString *const kPCServerErrorDomain = @"PCServerErrorDomain";
             completionHandler(nil, [PCServer serverErrorWithCode:PCServerErrorCode_WrongRootObject]);
             return;
         }
-        
-        completionHandler(jsonObject, nil);
+        PCRoot *root = [[PCRoot alloc] initWithModelDictionary:jsonObject];
+        completionHandler(root, nil);
     }];
     [task resume];
 }

@@ -8,10 +8,12 @@
 
 #import "ViewController.h"
 #import "PCServer.h"
+#import "PCRoot.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) PCServer *server;
+@property (nonatomic, strong) PCRoot *root;
 
 @end
 
@@ -19,14 +21,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.root = [[PCRoot alloc] initWithTotalItems:0 activities:nil];
     self.server = [[PCServer alloc] initWithAuthorizationToken:@"Token CLLkHDPJEGwuqOuDf056Udh6pm6OK-zQkEMRk062Glk"
                                                              urlCache:nil];
-    [self.server loadRootObjectCompletionHandler:^(id  _Nullable data, NSError * _Nullable error) {
+    NSLog(@"%@", [NSThread currentThread]);
+    [self.server loadRootObjectCompletionHandler:^(PCRoot *_Nullable root, NSError * _Nullable error) {
+        NSLog(@"%@", [NSThread currentThread]);
         if (error) {
             NSLog(@"Error:\n%@", error);
-        } else {
-            NSLog(@"Data:\n%@", data);
+            return;
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"%@", [NSThread currentThread]);
+            self.root = [self.root mergedWithRoot:root];
+        });
     }];
 }
 

@@ -14,7 +14,7 @@
 @interface PCRoot()
 
 @property (nonatomic, assign, readwrite) NSInteger totalItems;
-@property (nonatomic, strong, readwrite) NSArray<PCActivity*> *activities;
+@property (nonatomic, strong, readwrite) NSOrderedSet<PCActivity*> *activities;
 
 @end
 
@@ -25,12 +25,26 @@
 }
 
 - (instancetype)initWithModelDictionary:(NSDictionary*)modelDictionary {
+    NSDictionary *data = [modelDictionary dictionaryForKey:@"data"];
+    NSInteger totalItems = [[data numberForKey:@"totalItems"] integerValue];
+    NSOrderedSet *activities = [NSOrderedSet orderedSetWithArray:[PCActivity activitiesWithModelArray:[data arrayForKey:@"items"]]];
+    return [self initWithTotalItems:totalItems
+                         activities:activities];
+}
+
+- (instancetype)initWithTotalItems:(NSInteger)totalItems activities:(NSOrderedSet<PCActivity*>*)activities {
     if (self = [super init]) {
-        NSDictionary *data = [modelDictionary dictionaryForKey:@"data"];
-        self.totalItems = [[data numberForKey:@"totalItems"] integerValue];
-        self.activities = [PCActivity activitiesWithModelArray:[data arrayForKey:@"items"]];
+        self.totalItems = totalItems;
+        self.activities = activities;
     }
     return self;
+}
+
+- (PCRoot*)mergedWithRoot:(PCRoot*)another {
+    NSInteger totalItems = MAX(self.totalItems, another.totalItems);
+    NSMutableOrderedSet *activities = self.activities? [self.activities mutableCopy]: [[NSMutableOrderedSet alloc] init];
+    [activities unionOrderedSet:another.activities];
+    return [[PCRoot alloc] initWithTotalItems:totalItems activities:activities];
 }
 
 @end

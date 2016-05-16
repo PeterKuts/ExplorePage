@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class PCRoot;
+
 NS_ASSUME_NONNULL_BEGIN
 
 extern NSString *const kPCServerErrorDomain;
@@ -18,7 +20,7 @@ typedef enum : NSUInteger {
 
 
 
-typedef void(^RootObjectCompletionHandler)(id _Nullable data, NSError * _Nullable error);
+typedef void(^RootObjectCompletionHandler)(PCRoot * _Nullable rootObject, NSError * _Nullable error);
 
 @interface PCServer : NSObject
 
