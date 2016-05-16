@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CEADC3601CE9F083003337ED /* PCPhotoFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC35F1CE9F083003337ED /* PCPhotoFetcher.m */; };
 		CEBAB4531CE9DCD600357BC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAB4521CE9DCD600357BC9 /* main.m */; };
 		CEBAB4561CE9DCD600357BC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAB4551CE9DCD600357BC9 /* AppDelegate.m */; };
 		CEBAB4591CE9DCD600357BC9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAB4581CE9DCD600357BC9 /* ViewController.m */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CEADC35E1CE9F083003337ED /* PCPhotoFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCPhotoFetcher.h; sourceTree = "<group>"; };
+		CEADC35F1CE9F083003337ED /* PCPhotoFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCPhotoFetcher.m; sourceTree = "<group>"; };
 		CEBAB44E1CE9DCD600357BC9 /* ExplorePage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExplorePage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBAB4521CE9DCD600357BC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEBAB4541CE9DCD600357BC9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +42,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CEADC35D1CE9F05D003337ED /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CEADC35E1CE9F083003337ED /* PCPhotoFetcher.h */,
+				CEADC35F1CE9F083003337ED /* PCPhotoFetcher.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		CEBAB4451CE9DCD600357BC9 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +70,7 @@
 		CEBAB4501CE9DCD600357BC9 /* ExplorePage */ = {
 			isa = PBXGroup;
 			children = (
+				CEADC35D1CE9F05D003337ED /* Network */,
 				CEBAB4541CE9DCD600357BC9 /* AppDelegate.h */,
 				CEBAB4551CE9DCD600357BC9 /* AppDelegate.m */,
 				CEBAB4571CE9DCD600357BC9 /* ViewController.h */,
@@ -150,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEBAB4591CE9DCD600357BC9 /* ViewController.m in Sources */,
+				CEADC3601CE9F083003337ED /* PCPhotoFetcher.m in Sources */,
 				CEBAB4561CE9DCD600357BC9 /* AppDelegate.m in Sources */,
 				CEBAB4531CE9DCD600357BC9 /* main.m in Sources */,
 			);
@@ -304,6 +318,7 @@
 				CEBAB4671CE9DCD600357BC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "PCPhotoFetcher.h"
 
 @interface ViewController ()
+
+@property (nonatomic, strong) PCPhotoFetcher *fetcher;
 
 @end
 
@@ -16,12 +19,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.fetcher = [[PCPhotoFetcher alloc] initWithAuthorizationToken:@"Token CLLkHDPJEGwuqOuDf056Udh6pm6OK-zQkEMRk062Glk"
+                                                             urlCache:nil];
+    [self.fetcher fetchPhotoListCompletionHandler:^(id  _Nullable data, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error:\n%@", error);
+        } else {
+            NSLog(@"Data:\n%@", data);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
