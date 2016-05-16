@@ -10,6 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString *const kPCPhotoFetcherErrorDomain;
+
+typedef enum : NSUInteger {
+    PCPhotoFetcherErrorCode_WrongRootObject,
+} PCPhotoFetcherErrorCode;
+
+
+
 typedef void(^PhotoListCompletionHandler)(id _Nullable data, NSError * _Nullable error);
 
 @interface PCPhotoFetcher : NSObject

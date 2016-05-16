@@ -7,6 +7,10 @@
 //
 
 #import "PCPhotoFetcher.h"
+#import "PCActivity.h"
+
+NSString *const kPCPhotoFetcherErrorDomain = @"PCPhotoFetcherErrorDomain";
+
 
 @interface PCPhotoFetcher()
 
@@ -56,17 +60,26 @@
             completionHandler(nil, error);
             return;
         }
-
-        id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-        
+        NSDictionary *jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
         if (error) {
             completionHandler(nil, error);
+            return;
+        }
+        
+        if (![jsonObject isKindOfClass:[NSDictionary class]]) {
+            completionHandler(nil, [PCPhotoFetcher fetcherErrorWithCode:PCPhotoFetcherErrorCode_WrongRootObject]);
             return;
         }
         
         completionHandler(jsonObject, nil);
     }];
     [task resume];
+}
+
+#pragma mark - Errors 
+
++ (NSError*)fetcherErrorWithCode:(PCPhotoFetcherErrorCode)code {
+    return [NSError errorWithDomain:kPCPhotoFetcherErrorDomain code:code userInfo:nil];
 }
 
 @end
