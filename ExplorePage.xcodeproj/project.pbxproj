@@ -10,13 +10,15 @@
 		CEADC3601CE9F083003337ED /* PCServer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC35F1CE9F083003337ED /* PCServer.m */; };
 		CEADC3671CEA04F9003337ED /* PCActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3661CEA04F9003337ED /* PCActivity.m */; };
 		CEADC36A1CEA065A003337ED /* PCPhotoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3691CEA065A003337ED /* PCPhotoObject.m */; };
-		CEADC36D1CEA077C003337ED /* NSDictionary+TypeCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC36C1CEA077C003337ED /* NSDictionary+TypeCheck.m */; };
 		CEADC3701CEA0990003337ED /* PCPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC36F1CEA0990003337ED /* PCPhoto.m */; };
 		CEADC3731CEA13AF003337ED /* PCRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3721CEA13AF003337ED /* PCRoot.m */; };
 		CEADC3781CEA6DBC003337ED /* PCObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3771CEA6DBC003337ED /* PCObject.m */; };
+		CEADC3891CEA7DD9003337ED /* PhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3811CEA7DD9003337ED /* PhotoCollectionViewController.m */; };
+		CEADC38A1CEA7DD9003337ED /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3831CEA7DD9003337ED /* StartViewController.m */; };
+		CEADC38B1CEA7DD9003337ED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3851CEA7DD9003337ED /* ViewController.m */; };
+		CEADC38C1CEA7DD9003337ED /* NSDictionary+TypeCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3881CEA7DD9003337ED /* NSDictionary+TypeCheck.m */; };
 		CEBAB4531CE9DCD600357BC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAB4521CE9DCD600357BC9 /* main.m */; };
 		CEBAB4561CE9DCD600357BC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAB4551CE9DCD600357BC9 /* AppDelegate.m */; };
-		CEBAB4591CE9DCD600357BC9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAB4581CE9DCD600357BC9 /* ViewController.m */; };
 		CEBAB45C1CE9DCD600357BC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBAB45A1CE9DCD600357BC9 /* Main.storyboard */; };
 		CEBAB45E1CE9DCD600357BC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBAB45D1CE9DCD600357BC9 /* Assets.xcassets */; };
 		CEBAB4611CE9DCD600357BC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBAB45F1CE9DCD600357BC9 /* LaunchScreen.storyboard */; };
@@ -29,8 +31,6 @@
 		CEADC3661CEA04F9003337ED /* PCActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCActivity.m; sourceTree = "<group>"; };
 		CEADC3681CEA065A003337ED /* PCPhotoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCPhotoObject.h; sourceTree = "<group>"; };
 		CEADC3691CEA065A003337ED /* PCPhotoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCPhotoObject.m; sourceTree = "<group>"; };
-		CEADC36B1CEA077C003337ED /* NSDictionary+TypeCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TypeCheck.h"; sourceTree = "<group>"; };
-		CEADC36C1CEA077C003337ED /* NSDictionary+TypeCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TypeCheck.m"; sourceTree = "<group>"; };
 		CEADC36E1CEA0990003337ED /* PCPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCPhoto.h; sourceTree = "<group>"; };
 		CEADC36F1CEA0990003337ED /* PCPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCPhoto.m; sourceTree = "<group>"; };
 		CEADC3711CEA13AF003337ED /* PCRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCRoot.h; sourceTree = "<group>"; };
@@ -38,12 +38,18 @@
 		CEADC3741CEA60CC003337ED /* ModelClasses.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelClasses.h; sourceTree = "<group>"; };
 		CEADC3761CEA6DBC003337ED /* PCObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCObject.h; sourceTree = "<group>"; };
 		CEADC3771CEA6DBC003337ED /* PCObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCObject.m; sourceTree = "<group>"; };
+		CEADC3801CEA7DD9003337ED /* PhotoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewController.h; sourceTree = "<group>"; };
+		CEADC3811CEA7DD9003337ED /* PhotoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewController.m; sourceTree = "<group>"; };
+		CEADC3821CEA7DD9003337ED /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
+		CEADC3831CEA7DD9003337ED /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		CEADC3841CEA7DD9003337ED /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CEADC3851CEA7DD9003337ED /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CEADC3871CEA7DD9003337ED /* NSDictionary+TypeCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TypeCheck.h"; sourceTree = "<group>"; };
+		CEADC3881CEA7DD9003337ED /* NSDictionary+TypeCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TypeCheck.m"; sourceTree = "<group>"; };
 		CEBAB44E1CE9DCD600357BC9 /* ExplorePage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExplorePage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBAB4521CE9DCD600357BC9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEBAB4541CE9DCD600357BC9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEBAB4551CE9DCD600357BC9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CEBAB4571CE9DCD600357BC9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CEBAB4581CE9DCD600357BC9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CEBAB45B1CE9DCD600357BC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEBAB45D1CE9DCD600357BC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEBAB4601CE9DCD600357BC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,10 +90,30 @@
 				CEADC3691CEA065A003337ED /* PCPhotoObject.m */,
 				CEADC36E1CEA0990003337ED /* PCPhoto.h */,
 				CEADC36F1CEA0990003337ED /* PCPhoto.m */,
-				CEADC36B1CEA077C003337ED /* NSDictionary+TypeCheck.h */,
-				CEADC36C1CEA077C003337ED /* NSDictionary+TypeCheck.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CEADC37F1CEA7DD9003337ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEADC3801CEA7DD9003337ED /* PhotoCollectionViewController.h */,
+				CEADC3811CEA7DD9003337ED /* PhotoCollectionViewController.m */,
+				CEADC3821CEA7DD9003337ED /* StartViewController.h */,
+				CEADC3831CEA7DD9003337ED /* StartViewController.m */,
+				CEADC3841CEA7DD9003337ED /* ViewController.h */,
+				CEADC3851CEA7DD9003337ED /* ViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEADC3861CEA7DD9003337ED /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CEADC3871CEA7DD9003337ED /* NSDictionary+TypeCheck.h */,
+				CEADC3881CEA7DD9003337ED /* NSDictionary+TypeCheck.m */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		CEBAB4451CE9DCD600357BC9 = {
@@ -109,12 +135,12 @@
 		CEBAB4501CE9DCD600357BC9 /* ExplorePage */ = {
 			isa = PBXGroup;
 			children = (
+				CEADC37F1CEA7DD9003337ED /* View */,
 				CEADC3611CEA0319003337ED /* Model */,
 				CEADC35D1CE9F05D003337ED /* Network */,
+				CEADC3861CEA7DD9003337ED /* Utilities */,
 				CEBAB4541CE9DCD600357BC9 /* AppDelegate.h */,
 				CEBAB4551CE9DCD600357BC9 /* AppDelegate.m */,
-				CEBAB4571CE9DCD600357BC9 /* ViewController.h */,
-				CEBAB4581CE9DCD600357BC9 /* ViewController.m */,
 				CEBAB45A1CE9DCD600357BC9 /* Main.storyboard */,
 				CEBAB45D1CE9DCD600357BC9 /* Assets.xcassets */,
 				CEBAB45F1CE9DCD600357BC9 /* LaunchScreen.storyboard */,
@@ -203,15 +229,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEADC3731CEA13AF003337ED /* PCRoot.m in Sources */,
+				CEADC38C1CEA7DD9003337ED /* NSDictionary+TypeCheck.m in Sources */,
 				CEADC3781CEA6DBC003337ED /* PCObject.m in Sources */,
-				CEBAB4591CE9DCD600357BC9 /* ViewController.m in Sources */,
 				CEADC3701CEA0990003337ED /* PCPhoto.m in Sources */,
 				CEADC3601CE9F083003337ED /* PCServer.m in Sources */,
 				CEBAB4561CE9DCD600357BC9 /* AppDelegate.m in Sources */,
+				CEADC38B1CEA7DD9003337ED /* ViewController.m in Sources */,
 				CEBAB4531CE9DCD600357BC9 /* main.m in Sources */,
+				CEADC3891CEA7DD9003337ED /* PhotoCollectionViewController.m in Sources */,
+				CEADC38A1CEA7DD9003337ED /* StartViewController.m in Sources */,
 				CEADC3671CEA04F9003337ED /* PCActivity.m in Sources */,
 				CEADC36A1CEA065A003337ED /* PCPhotoObject.m in Sources */,
-				CEADC36D1CEA077C003337ED /* NSDictionary+TypeCheck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
