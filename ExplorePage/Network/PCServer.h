@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class PCRoot;
+@class PCPhoto;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,11 +29,12 @@ typedef void(^RootObjectCompletionHandler)(PCRoot * _Nullable rootObject, NSErro
 - (instancetype)initWithAuthorizationToken:(NSString*)authorizationToken;
 - (instancetype)initWithAuthorizationToken:(NSString*)authorizationToken urlCache:(NSURLCache* _Nullable)cache NS_DESIGNATED_INITIALIZER;
 
-- (void)loadRootObjectCompletionHandler:(RootObjectCompletionHandler)completionHandler;
 - (void)loadRootObjectLimit:(NSInteger)limit
                     afterId:(NSNumber* _Nullable)afterId
                    beforeId:(NSNumber* _Nullable)beforeId
           completionHandler:(RootObjectCompletionHandler)completionHandler;
+
+- (void)loadPhoto:(PCPhoto*)photo completionHandler:(void(^)())completionHandler;
 
 @end
 

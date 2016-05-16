@@ -8,6 +8,7 @@
 
 #import "PCServer.h"
 #import "PCRoot.h"
+#import "PCPhoto.h"
 
 NSString *const kPCServerErrorDomain = @"PCServerErrorDomain";
 
@@ -16,6 +17,7 @@ NSString *const kPCServerErrorDomain = @"PCServerErrorDomain";
 
 @property (nonatomic, strong) NSURLSession *session;
 @property (nonatomic, copy) NSURL *baseURL;
+@property (nonatomic, copy) NSString *authorizationToken;
 
 @end
 
@@ -33,22 +35,13 @@ NSString *const kPCServerErrorDomain = @"PCServerErrorDomain";
     if (self = [super init]) {
         //TODO: constructor parameter
         self.baseURL = [NSURL URLWithString:@"http://qa.api.petcube.com/api/v1/discover"];
+        self.authorizationToken = authorizationToken;
         
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        configuration.HTTPAdditionalHeaders = @{
-                                                @"Content-Type": @"application/json",
-                                                @"Authorization": authorizationToken
-                                                };
         configuration.URLCache = cache;
         self.session = [NSURLSession sessionWithConfiguration:configuration];
     }
     return self;
-}
-
-
-- (void)loadRootObjectCompletionHandler:(RootObjectCompletionHandler)completionHandler {
-    [self loadRootObject:self.baseURL
-       completionHandler:completionHandler];
 }
 
 - (void)loadRootObjectLimit:(NSInteger)limit
@@ -72,7 +65,11 @@ NSString *const kPCServerErrorDomain = @"PCServerErrorDomain";
 }
 
 - (void)loadRootObject:(NSURL*)url completionHandler:(RootObjectCompletionHandler)completionHandler {
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.allHTTPHeaderFields = @{
+                                    @"Content-Type": @"application/json",
+                                    @"Authorization": self.authorizationToken
+                                    };
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request
                                                  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
     {
@@ -95,6 +92,16 @@ NSString *const kPCServerErrorDomain = @"PCServerErrorDomain";
     }];
     [task resume];
 }
+
+- (void)loadPhoto:(PCPhoto*)photo completionHandler:(void(^)())completionHandler {
+    NSURLRequest *request = [NSURLRequest requestWithURL:photo.url];
+    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+    {
+        completionHandler();
+    }];
+    [task resume];
+}
+
 
 #pragma mark - Errors 
 
