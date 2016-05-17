@@ -70,6 +70,7 @@ NSString *const kPCServerErrorDomain = @"PCServerErrorDomain";
                                     @"Content-Type": @"application/json",
                                     @"Authorization": self.authorizationToken
                                     };
+    request.cachePolicy = NSURLRequestReloadIgnoringCacheData;
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request
                                                  completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
     {

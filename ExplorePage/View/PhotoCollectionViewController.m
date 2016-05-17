@@ -13,9 +13,8 @@
 static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
 
 @interface PhotoCollectionViewController() <UICollectionViewDelegate, UICollectionViewDataSource>
-@property (assign) BOOL canPreload;
-@property (assign) BOOL canReload;
-
+@property (assign) BOOL canLoadItems;
+@property (assign) NSInteger batchSize;
 
 @property (strong) PCServer *server;
 @property (strong) PhotoActivitiesOrderedCollection *photoActivities;
@@ -42,12 +41,11 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
     self.photoCollection.delegate = self;
     self.photoCollection.dataSource = self;
 
-    self.canReload = YES;
-    self.canPreload = YES;
+    self.canLoadItems = YES;
 
     CGFloat precalcSide = self.view.frame.size.width/3.0;
-    NSInteger firstBatch = (NSInteger)ceilf(self.view.frame.size.height / precalcSide) * 3;
-    [self loadRootObjectWithLimit:firstBatch after:NO];
+    self.batchSize = (NSInteger)ceilf(self.view.frame.size.height / precalcSide) * 3;
+    [self loadRootObjectWithLimit:self.batchSize loadNewest:YES];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -58,11 +56,15 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
     layout.itemSize = CGSizeMake(side, side);
 }
 
-- (void)loadRootObjectWithLimit:(NSInteger)limit after:(BOOL)after {
+- (void)loadRootObjectWithLimit:(NSInteger)limit loadNewest:(BOOL)newest {
+    if (!self.canLoadItems) {
+        return;
+    }
+    self.canLoadItems = NO;
     __weak typeof(self) wSelf = self;
     [self.server loadRootObjectLimit:limit
-                             afterId:after? self.photoActivities.maxModelId: nil
-                            beforeId:after? nil: self.photoActivities.minModelId
+                             afterId:newest? self.photoActivities.maxModelId: nil
+                            beforeId:newest? nil: self.photoActivities.minModelId
                    completionHandler:^(PCRoot * _Nullable rootObject, NSError * _Nullable error)
      {
          if (error) {
@@ -71,18 +73,20 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
          }
          dispatch_async(dispatch_get_main_queue(), ^{
              __strong typeof(wSelf) sSelf = wSelf;
-             [sSelf updatePhotoActivitiesWithRootObject:rootObject];
+             [sSelf updatePhotoActivitiesWithRootObject:rootObject newest:newest];
          });
      }];
 }
 
-- (void)updatePhotoActivitiesWithRootObject:(PCRoot*)root {
+- (void)updatePhotoActivitiesWithRootObject:(PCRoot*)root newest:(BOOL)newest {
     [self.photoCollection performBatchUpdates:^{
         NSArray<NSIndexPath*>* indexPaths = [self.photoActivities addActivities:root.activities indexConstructor:^NSIndexPath *(NSInteger index) {
             return [NSIndexPath indexPathForItem:index inSection:0];
         }];
         [self.photoCollection insertItemsAtIndexPaths:indexPaths];
-    } completion:nil];
+    } completion:^(BOOL finished) {
+        self.canLoadItems = YES;
+    }];
 }
 
 
@@ -97,11 +101,10 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"scrollViewDidScroll");
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSLog(@"scrollViewDidEndDecelerating");
+    BOOL bottomLoad = scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.bounds.size.height;
+    if (bottomLoad && self.canLoadItems) {
+        [self loadRootObjectWithLimit:self.batchSize loadNewest:NO];
+    }
 }
 
 @end
