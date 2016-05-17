@@ -21,6 +21,7 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
 @property (strong) PhotoActivitiesOrderedCollection *photoActivities;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *photoCollection;
+@property (strong) UIRefreshControl *refresher;
 
 @end
 
@@ -43,6 +44,11 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
     self.photoCollection.dataSource = self;
 
     self.canLoadItems = YES;
+
+    self.refresher = [[UIRefreshControl alloc] init];
+    [self.refresher addTarget:self action:@selector(refershControlAction) forControlEvents:UIControlEventValueChanged];
+    [self.photoCollection addSubview:self.refresher];
+    self.photoCollection.alwaysBounceVertical = YES;
 
     CGFloat precalcSide = self.view.frame.size.width/3.0;
     self.batchSize = (NSInteger)ceilf(self.view.frame.size.height / precalcSide) * 3;
@@ -87,9 +93,11 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
         [self.photoCollection insertItemsAtIndexPaths:indexPaths];
     } completion:^(BOOL finished) {
         self.canLoadItems = YES;
+        if (newest) {
+            [self.refresher endRefreshing];
+        }
     }];
 }
-
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.photoActivities.allActivities.count;
@@ -111,6 +119,13 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
     return cell;
 }
 
+- (void)refershControlAction {
+    if (!self.canLoadItems) {
+        [self.refresher endRefreshing];
+    }
+    [self loadRootObjectWithLimit:self.batchSize loadNewest:YES];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     BOOL bottomLoad = scrollView.contentOffset.y > scrollView.contentSize.height - 1.5*scrollView.bounds.size.height;
     if (bottomLoad && self.canLoadItems) {
@@ -119,8 +134,9 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    PCPhotoObject* photoObject = (PCPhotoObject*)[self.photoActivities.allActivities objectAtIndex:indexPath.item].object;
-    NSLog(@"%@", photoObject.smallestPhoto.url);
+    PCActivity *activity = [self.photoActivities.allActivities objectAtIndex:indexPath.item];
+    PCPhotoObject* photoObject = (PCPhotoObject*)activity.object;
+    NSLog(@"%@: %@", activity.modelId, photoObject.smallestPhoto.url);
 }
 
 @end
