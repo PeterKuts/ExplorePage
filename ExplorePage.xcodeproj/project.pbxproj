@@ -17,7 +17,6 @@
 		CEADC3781CEA6DBC003337ED /* PCObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3771CEA6DBC003337ED /* PCObject.m */; };
 		CEADC3891CEA7DD9003337ED /* PhotoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3811CEA7DD9003337ED /* PhotoCollectionViewController.m */; };
 		CEADC38A1CEA7DD9003337ED /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3831CEA7DD9003337ED /* StartViewController.m */; };
-		CEADC38B1CEA7DD9003337ED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3851CEA7DD9003337ED /* ViewController.m */; };
 		CEADC38C1CEA7DD9003337ED /* NSDictionary+TypeCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3881CEA7DD9003337ED /* NSDictionary+TypeCheck.m */; };
 		CEBAB4531CE9DCD600357BC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAB4521CE9DCD600357BC9 /* main.m */; };
 		CEBAB4561CE9DCD600357BC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBAB4551CE9DCD600357BC9 /* AppDelegate.m */; };
@@ -48,8 +47,6 @@
 		CEADC3811CEA7DD9003337ED /* PhotoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewController.m; sourceTree = "<group>"; };
 		CEADC3821CEA7DD9003337ED /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		CEADC3831CEA7DD9003337ED /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
-		CEADC3841CEA7DD9003337ED /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CEADC3851CEA7DD9003337ED /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CEADC3871CEA7DD9003337ED /* NSDictionary+TypeCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TypeCheck.h"; sourceTree = "<group>"; };
 		CEADC3881CEA7DD9003337ED /* NSDictionary+TypeCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TypeCheck.m"; sourceTree = "<group>"; };
 		CEBAB44E1CE9DCD600357BC9 /* ExplorePage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExplorePage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,8 +104,6 @@
 				CEADC3811CEA7DD9003337ED /* PhotoCollectionViewController.m */,
 				CEADC3821CEA7DD9003337ED /* StartViewController.h */,
 				CEADC3831CEA7DD9003337ED /* StartViewController.m */,
-				CEADC3841CEA7DD9003337ED /* ViewController.h */,
-				CEADC3851CEA7DD9003337ED /* ViewController.m */,
 				CE762F501CEB2B1B003A72BD /* PhotoCollectionViewCell.h */,
 				CE762F511CEB2B1B003A72BD /* PhotoCollectionViewCell.m */,
 			);
@@ -246,7 +241,6 @@
 				CEADC3601CE9F083003337ED /* PCServer.m in Sources */,
 				CEBAB4561CE9DCD600357BC9 /* AppDelegate.m in Sources */,
 				CE762F521CEB2B1B003A72BD /* PhotoCollectionViewCell.m in Sources */,
-				CEADC38B1CEA7DD9003337ED /* ViewController.m in Sources */,
 				CEBAB4531CE9DCD600357BC9 /* main.m in Sources */,
 				CEADC3891CEA7DD9003337ED /* PhotoCollectionViewController.m in Sources */,
 				CEADC38A1CEA7DD9003337ED /* StartViewController.m in Sources */,
