@@ -127,7 +127,7 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    BOOL bottomLoad = scrollView.contentOffset.y > scrollView.contentSize.height - 1.5*scrollView.bounds.size.height;
+    BOOL bottomLoad = scrollView.contentOffset.y > scrollView.contentSize.height - 2*scrollView.bounds.size.height;
     if (bottomLoad && self.canLoadItems) {
         [self loadRootObjectWithLimit:self.batchSize loadNewest:NO];
     }
