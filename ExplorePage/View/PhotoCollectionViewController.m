@@ -112,10 +112,15 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    BOOL bottomLoad = scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.bounds.size.height;
+    BOOL bottomLoad = scrollView.contentOffset.y > scrollView.contentSize.height - 1.5*scrollView.bounds.size.height;
     if (bottomLoad && self.canLoadItems) {
         [self loadRootObjectWithLimit:self.batchSize loadNewest:NO];
     }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    PCPhotoObject* photoObject = (PCPhotoObject*)[self.photoActivities.allActivities objectAtIndex:indexPath.item].object;
+    NSLog(@"%@", photoObject.smallestPhoto.url);
 }
 
 @end
