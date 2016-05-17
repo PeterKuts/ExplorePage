@@ -51,20 +51,40 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CWv-ee-2mN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OZX-83-1OO">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="150" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionCellId" id="EIN-Q3-ySm">
-                                        <rect key="frame" x="0.0" y="74" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionCellId" id="EIN-Q3-ySm" customClass="PhotoCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="74" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Apc-Ql-8pm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="so8-bW-BUf">
+                                                    <rect key="frame" x="65" y="65" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="so8-bW-BUf" firstAttribute="centerY" secondItem="EIN-Q3-ySm" secondAttribute="centerY" id="HF3-BH-kKt"/>
+                                            <constraint firstItem="Apc-Ql-8pm" firstAttribute="leading" secondItem="EIN-Q3-ySm" secondAttribute="leading" id="c9C-qT-sj1"/>
+                                            <constraint firstAttribute="trailing" secondItem="Apc-Ql-8pm" secondAttribute="trailing" id="fYY-X6-TGg"/>
+                                            <constraint firstItem="so8-bW-BUf" firstAttribute="centerX" secondItem="EIN-Q3-ySm" secondAttribute="centerX" id="leE-qc-5pm"/>
+                                            <constraint firstAttribute="bottom" secondItem="Apc-Ql-8pm" secondAttribute="bottom" id="rj0-dJ-XeC"/>
+                                            <constraint firstItem="Apc-Ql-8pm" firstAttribute="top" secondItem="EIN-Q3-ySm" secondAttribute="top" id="yMy-Qm-u48"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="activityIndicator" destination="so8-bW-BUf" id="8PS-xS-kXy"/>
+                                            <outlet property="imageView" destination="Apc-Ql-8pm" id="eXw-pG-IHg"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

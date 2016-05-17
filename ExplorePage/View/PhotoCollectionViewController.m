@@ -9,6 +9,7 @@
 #import "PhotoCollectionViewController.h"
 #import "ModelClasses.h"
 #import "PhotoActivitiesOrderedCollection.h"
+#import "PhotoCollectionViewCell.h"
 
 static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
 
@@ -95,8 +96,18 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:PhotoCollectionCellId forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
+    PhotoCollectionViewCell *cell = (PhotoCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:PhotoCollectionCellId forIndexPath:indexPath];
+    
+    PCPhotoObject* photoObject = (PCPhotoObject*)[self.photoActivities.allActivities objectAtIndex:indexPath.item].object;
+    cell.photo = photoObject.smallestPhoto;
+    __weak PhotoCollectionViewCell *wCell = cell;
+    [self.server loadPhoto:cell.photo
+         completionHandler:^(PCPhoto * _Nullable photo, UIImage * _Nullable image, NSError * _Nullable error) {
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 __strong PhotoCollectionViewCell *sCell = wCell;
+                 [sCell setupImage:image forPhoto:photo];
+             });
+         }];
     return cell;
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE762F4F1CEB1F3C003A72BD /* PhotoActivitiesOrderedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = CE762F4E1CEB1F3C003A72BD /* PhotoActivitiesOrderedCollection.m */; };
+		CE762F521CEB2B1B003A72BD /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE762F511CEB2B1B003A72BD /* PhotoCollectionViewCell.m */; };
 		CEADC3601CE9F083003337ED /* PCServer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC35F1CE9F083003337ED /* PCServer.m */; };
 		CEADC3671CEA04F9003337ED /* PCActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3661CEA04F9003337ED /* PCActivity.m */; };
 		CEADC36A1CEA065A003337ED /* PCPhotoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CEADC3691CEA065A003337ED /* PCPhotoObject.m */; };
@@ -28,6 +29,8 @@
 /* Begin PBXFileReference section */
 		CE762F4D1CEB1F3C003A72BD /* PhotoActivitiesOrderedCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoActivitiesOrderedCollection.h; sourceTree = "<group>"; };
 		CE762F4E1CEB1F3C003A72BD /* PhotoActivitiesOrderedCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoActivitiesOrderedCollection.m; sourceTree = "<group>"; };
+		CE762F501CEB2B1B003A72BD /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		CE762F511CEB2B1B003A72BD /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		CEADC35E1CE9F083003337ED /* PCServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCServer.h; sourceTree = "<group>"; };
 		CEADC35F1CE9F083003337ED /* PCServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCServer.m; sourceTree = "<group>"; };
 		CEADC3651CEA04F9003337ED /* PCActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCActivity.h; sourceTree = "<group>"; };
@@ -106,6 +109,8 @@
 				CEADC3831CEA7DD9003337ED /* StartViewController.m */,
 				CEADC3841CEA7DD9003337ED /* ViewController.h */,
 				CEADC3851CEA7DD9003337ED /* ViewController.m */,
+				CE762F501CEB2B1B003A72BD /* PhotoCollectionViewCell.h */,
+				CE762F511CEB2B1B003A72BD /* PhotoCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				CE762F4F1CEB1F3C003A72BD /* PhotoActivitiesOrderedCollection.m in Sources */,
 				CEADC3601CE9F083003337ED /* PCServer.m in Sources */,
 				CEBAB4561CE9DCD600357BC9 /* AppDelegate.m in Sources */,
+				CE762F521CEB2B1B003A72BD /* PhotoCollectionViewCell.m in Sources */,
 				CEADC38B1CEA7DD9003337ED /* ViewController.m in Sources */,
 				CEBAB4531CE9DCD600357BC9 /* main.m in Sources */,
 				CEADC3891CEA7DD9003337ED /* PhotoCollectionViewController.m in Sources */,
