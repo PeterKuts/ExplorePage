@@ -12,6 +12,8 @@
 #import "PhotoCollectionViewCell.h"
 
 static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
+static const NSInteger ColumnsCount = 3;
+
 
 @interface PhotoCollectionViewController() <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (assign) BOOL canLoadItems;
@@ -50,8 +52,8 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
     [self.photoCollection addSubview:self.refresher];
     self.photoCollection.alwaysBounceVertical = YES;
 
-    CGFloat precalcSide = self.view.frame.size.width/3.0;
-    self.batchSize = (NSInteger)ceilf(self.view.frame.size.height / precalcSide) * 3;
+    CGFloat precalcSide = self.view.frame.size.width/ColumnsCount;
+    self.batchSize = (NSInteger)ceilf(self.view.frame.size.height / precalcSide) * ColumnsCount;
     [self loadRootObjectWithLimit:self.batchSize loadNewest:YES];
 }
 
@@ -59,7 +61,7 @@ static NSString *const PhotoCollectionCellId = @"PhotoCollectionCellId";
     [super viewDidLayoutSubviews];
 
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.photoCollection.collectionViewLayout;
-    CGFloat side = (self.photoCollection.frame.size.width - layout.minimumInteritemSpacing*2.0)/3.0;
+    CGFloat side = floor((self.photoCollection.frame.size.width - layout.minimumInteritemSpacing*(ColumnsCount-1))/ColumnsCount);
     layout.itemSize = CGSizeMake(side, side);
 }
 

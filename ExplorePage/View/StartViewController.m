@@ -23,8 +23,8 @@ static NSString *const ShowPhotoCollectionSegue = @"ShowPhotoCollectionSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = self.title;
-    NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:10 * 1024 * 1024
-                                                      diskCapacity:100 * 1024 * 1024
+    NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:10 * 1024 * 1024 //10 MB
+                                                      diskCapacity:100 * 1024 * 1024 //100 MB
                                                           diskPath:@"PhotoCache"];
     self.server = [[PCServer alloc] initWithAuthorizationToken:@"Token CLLkHDPJEGwuqOuDf056Udh6pm6OK-zQkEMRk062Glk"
                                                       urlCache:cache];
